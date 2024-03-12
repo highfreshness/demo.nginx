@@ -24,14 +24,15 @@ git clone https://github.com/highfreshness/demo.nginx.git . && cd demo.nginx
 docker compose up -d && docker compose logs -f
 ```
 
-Connect to `localhost:8000/docs`
+1. Access `Localhost:8000/docs`
 
-You need to enter your ID/PW on the /token endpoint and receive an access token. ( ID:johndoe, PW:secret )
+2. You need to enter your ID/PW on the /token endpoint and receive an access token. ( ID:johndoe, PW:secret )
 
-The obtained token is used in postman or curl to send a request to `localhost/login` by adding the value to the authorization header.  
-   (example) `curl -L http://localhost/login -H 'Authorization: Bearer <ACCESS TOKEN>`
+3. The obtained token is used in postman or curl to send a request to `localhost/login` by adding the value to the authorization header.  
 
-If the token in the sent request is valid, you will receive the "message": "Successful authentication!" message, otherwise you will receive a "detail": "Could not validate credentials" message will be received.
+    (example) curl -L http://localhost/login -H 'Authorization: Bearer {ACCESS TOKEN}'
+
+4. If the token in the sent request is valid, you will receive the "message": "Successful authentication!" message, otherwise you will receive a "detail": "Could not validate credentials" message will be received.
 
 ## 3. Feature descriptions
 ### Nginx
@@ -88,7 +89,7 @@ http {
 **internal** : Specifies that a given location can only be used for internal requests. For external requests, the client error 404 (Not Found) is returned.
 
 
-### Logic on Auth_request failure
+### Logic on auth_request failure
 auth_request does not include the HTTP body when it receives a response, but if it receives a 401 response, it is redirected to @auth_failed, which signals the FastAPI's auth authentication endpoint and allows it to represent the body of the HTTP response.
 
 
