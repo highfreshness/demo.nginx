@@ -16,14 +16,22 @@ Docker
 Postman(or curl)   
 
 ## Install and run
-1. `git clone https://github.com/highfreshness/demo.nginx.git . && cd demo.nginx` 
-2. `docker compose up -d` or     
-`docker compose up -d && docker compose logs -f`(optional - with log)
-3. Connect to `localhost:8000/docs`
-4. You need to enter your ID/PW on the /token endpoint and receive an access token. ( ID:johndoe, PW:secret )
-5. The obtained token is used in postman or curl to send a request to `localhost/login` by adding the value to the authorization header.  
+```shell
+# Repository download
+git clone https://github.com/highfreshness/demo.nginx.git . && cd demo.nginx
+
+# docker compose up -d
+docker compose up -d && docker compose logs -f
+```
+
+Connect to `localhost:8000/docs`
+
+You need to enter your ID/PW on the /token endpoint and receive an access token. ( ID:johndoe, PW:secret )
+
+The obtained token is used in postman or curl to send a request to `localhost/login` by adding the value to the authorization header.  
    (example) `curl -L http://localhost/login -H 'Authorization: Bearer <ACCESS TOKEN>`
-6. If the token in the sent request is valid, you will receive the "message": "Successful authentication!" message, otherwise you will receive a "detail": "Could not validate credentials" message will be received.
+
+If the token in the sent request is valid, you will receive the "message": "Successful authentication!" message, otherwise you will receive a "detail": "Could not validate credentials" message will be received.
 
 ## 3. Feature descriptions
 ### Nginx
